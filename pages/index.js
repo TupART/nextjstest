@@ -119,7 +119,7 @@ export default function ExcelHandler() {
       <h2>2. Sube la plantilla PlantillaSTEP4.xlsx</h2>
       <input type="file" accept=".xlsx" onChange={(e) => handleTemplateUpload(e.target.files[0])} />
 
-      {data && (
+      {data && template ? (
         <div>
           <h3>Selecciona los nombres que deseas incluir:</h3>
           <form>
@@ -135,10 +135,11 @@ export default function ExcelHandler() {
               </div>
             ))}
           </form>
+          <button onClick={handleFillTemplate}>Generar archivo</button>
         </div>
+      ) : (
+        <p>Por favor, sube ambos archivos antes de continuar.</p>
       )}
-
-      <button onClick={handleFillTemplate}>Generar archivo</button>
     </div>
   );
 }
